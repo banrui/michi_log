@@ -1,0 +1,48 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" 
+    android:orientation="vertical">
+
+	<LinearLayout
+    	android:layout_width="fill_parent"
+    	android:layout_height="44dp"
+    	android:background="@color/header"
+    	android:gravity="center_vertical"
+    	android:orientation="horizontal" >
+    	<Button 
+        	android:id="@+id/menu"
+        	android:text="@string/test"
+        	android:layout_width="wrap_content"  
+        	android:layout_height="wrap_content"
+        	android:layout_weight="1"
+        	android:layout_margin="3dp"/> 
+    	<LinearLayout
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_weight="8"
+        	android:gravity="center_horizontal" >
+        	<TextView
+            	android:id="@+id/log_list_header"
+            	android:layout_width="wrap_content"
+            	android:layout_height="wrap_content"
+            	android:text="@string/app_name"
+            	android:textColor="@color/main_logo"
+            	android:textSize="16sp" 
+            	android:textStyle="bold|italic"/>
+   		</LinearLayout>
+    	<Button
+        	android:id="@+id/news"
+       		android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:text="@string/test"
+        	android:layout_weight="1"
+        	android:layout_margin="3dp"/>
+    </LinearLayout>
+    
+  	<ListView 
+  	    android:id="@android:id/list"
+ 		android:layout_width="fill_parent"
+ 		android:layout_height="fill_parent"/>
+
+</LinearLayout>
