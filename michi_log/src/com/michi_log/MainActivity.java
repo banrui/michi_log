@@ -18,14 +18,18 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 
+import com.michi_log.Activity.ActiveMapActivity;
 import com.michi_log.Activity.HistoryActivity;
 import com.michi_log.Activity.HomeActivity;
 import com.michi_log.Activity.LogListActivity;
+import com.michi_log.Activity.RecieverActivity;
 import com.michi_log.Activity.SearchActivity;
 import com.michi_log.Activity.SettingActivity;
 import com.michi_log.Util.HttpClientUtil;
 import com.michi_log.R;
 
+import android.location.Criteria;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -33,13 +37,17 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.app.Activity;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ReceiverCallNotAllowedException;
 
 
 public class MainActivity extends Activity {
 	
 	boolean stopFlg = false;
-
+	 private LocationManager mLocationManager;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,15 +62,36 @@ public class MainActivity extends Activity {
 				 * ボタンが押されてSTOPが押されるまでは、While文で一定時間毎にAPIに接続し、データをEvernoteに格納
 				 * ボタンを接続中に変更する
 				 * */
+			
+				
+				
 				while (!stopFlg) {
-			        	    HttpClient objHttp = new DefaultHttpClient();  
-			        	    HttpParams params = objHttp.getParams();  
-			        	    HttpConnectionParams.setConnectionTimeout(params, 1000); //接続のタイムアウト  
-			        	    HttpConnectionParams.setSoTimeout(params, 1000); //データ取得のタイムアウト  
-			        	    String sReturn = "";  
-			        	    try {  
-			        	        HttpGet objGet   = new HttpGet("http://api.gnavi.co.jp/ver1/RestSearchAPI/?keyid=f739e5c65b1d237d97a90e757e177ee5&area=AREA110&pref=PREF13&id=g144600&sort=1");  
-			        	        HttpResponse objResponse = objHttp.execute(objGet);  
+					LocationManager loc;
+					PendingIntent pendingIntent;
+					
+					
+					
+					//位置情報を取得
+//					Intent geoIntent = new Intent (MainActivity.this, RecieverActivity.class);
+//					PendingIntent geoPendingIntent = PendingIntent.getActivity(MainActivity.this, 0, geoIntent, 0);
+//
+//					Criteria criteria = new Criteria();
+//					criteria.setAccuracy(Criteria.ACCURACY_FINE);
+//					
+//					loc = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+//					loc.requestSingleUpdate(criteria, geoPendingIntent);
+					
+					//mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+					
+					//ぐるなび
+					HttpClient objHttp = new DefaultHttpClient();  
+			        HttpParams params = objHttp.getParams();  
+			        HttpConnectionParams.setConnectionTimeout(params, 1000); //接続のタイムアウト  
+			        HttpConnectionParams.setSoTimeout(params, 1000); //データ取得のタイムアウト  
+			        String sReturn = "";  
+			        try {  
+			        	HttpGet objGet   = new HttpGet("http://api.gnavi.co.jp/ver1/RestSearchAPI/?keyid=f739e5c65b1d237d97a90e757e177ee5&area=AREA110&pref=PREF13&id=g144600&sort=1");  
+			        	HttpResponse objResponse = objHttp.execute(objGet);  
 			        	        if (objResponse.getStatusLine().getStatusCode() < 400){  
 			        	            InputStream objStream = objResponse.getEntity().getContent();  
 			        	            InputStreamReader objReader = new InputStreamReader(objStream);  
@@ -82,7 +111,7 @@ public class MainActivity extends Activity {
 			        	    
 			        	    stopFlg = true;
 				}
-				Intent logListIntent = new Intent(MainActivity.this, LogListActivity.class);
+				Intent logListIntent = new Intent(MainActivity.this, ActiveMapActivity.class);
                 startActivity(logListIntent);
 
 			}
