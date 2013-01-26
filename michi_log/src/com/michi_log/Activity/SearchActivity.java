@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 
-import com.michi_log.MainActivity;
 import com.michi_log.R;
 
 public class SearchActivity extends Activity {

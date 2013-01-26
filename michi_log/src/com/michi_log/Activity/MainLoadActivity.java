@@ -25,7 +25,6 @@ import android.location.LocationManager;
 import android.location.LocationProvider;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;

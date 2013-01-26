@@ -4,16 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.evernote.client.oauth.android.EvernoteSession;
-import com.michi_log.Activity.HistoryActivity;
 import com.michi_log.Activity.HomeActivity;
 import com.michi_log.Activity.LogListActivity;
 import com.michi_log.Activity.MainLoadActivity;
 import com.michi_log.Activity.SearchActivity;
-import com.michi_log.Activity.SettingActivity;
 import com.michi_log.R;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;

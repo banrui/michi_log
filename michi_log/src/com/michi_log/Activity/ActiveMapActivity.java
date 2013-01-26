@@ -7,12 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
-import android.webkit.WebView;
 import android.widget.ImageView;
 
-import com.michi_log.MainActivity;
 import com.michi_log.R;
-import com.michi_log.Util.WebViewClient;
 
 public class ActiveMapActivity extends Activity {
 	@Override

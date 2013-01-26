@@ -1,23 +1,13 @@
 package com.michi_log.Activity;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
-
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import com.michi_log.Adapter.LogListAdapter;
 import com.michi_log.Dto.LogListDto;
-import com.michi_log.Util.HttpClientUtil;
 import com.michi_log.R;
 
 import android.os.AsyncTask;
@@ -26,16 +16,9 @@ import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteStatement;
-import android.view.Menu;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 
 /*
