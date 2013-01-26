@@ -1,7 +1,10 @@
 package com.michi_log;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +12,11 @@ import java.util.List;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
 
 import com.michi_log.Activity.HistoryActivity;
 import com.michi_log.Activity.HomeActivity;
@@ -31,7 +39,6 @@ import android.content.Intent;
 public class MainActivity extends Activity {
 	
 	boolean stopFlg = false;
-	ByteArrayOutputStream byteArrayOutputStream;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,34 +55,32 @@ public class MainActivity extends Activity {
 				 * ボタンを接続中に変更する
 				 * */
 				while (!stopFlg) {
-					//-----[POST送信するデータを格納]
-			        List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(1);
-			        //--パラメータ↓入れる！！--
-			        //nameValuePair.add(new BasicNameValuePair("test", tes));
-			        
-			        try {
-		    		    byteArrayOutputStream = new ByteArrayOutputStream();
-
-		    			//-----[POST送信]
-		    		    HttpClientUtil httpClientUtil = new HttpClientUtil();
-		    		    HttpResponse response = httpClientUtil.httpPostExecute("URLURLURL", nameValuePair);
-		    	                    
-		    	        //-----[サーバーからの応答を取得]
-		    	        if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-		    	        	response.getEntity().writeTo(byteArrayOutputStream);
-		    	        } else {
-		    	        	//Toast.makeText(this, "[error]: "+response.getStatusLine(), Toast.LENGTH_LONG).show();
-		    	        }
-		    	    } catch (UnsupportedEncodingException e) {
-		    	            e.printStackTrace();
-		    	    } catch (IOException e) {
-		    	            e.printStackTrace();
-		    	    }
-			        //sleep
-			        
-			        String getXML = byteArrayOutputStream.toString();
-			        
-			        
+			        	    HttpClient objHttp = new DefaultHttpClient();  
+			        	    HttpParams params = objHttp.getParams();  
+			        	    HttpConnectionParams.setConnectionTimeout(params, 1000); //接続のタイムアウト  
+			        	    HttpConnectionParams.setSoTimeout(params, 1000); //データ取得のタイムアウト  
+			        	    String sReturn = "";  
+			        	    try {  
+			        	        HttpGet objGet   = new HttpGet("http://api.gnavi.co.jp/ver1/RestSearchAPI/?keyid=f739e5c65b1d237d97a90e757e177ee5&area=AREA110&pref=PREF13&id=g144600&sort=1");  
+			        	        HttpResponse objResponse = objHttp.execute(objGet);  
+			        	        if (objResponse.getStatusLine().getStatusCode() < 400){  
+			        	            InputStream objStream = objResponse.getEntity().getContent();  
+			        	            InputStreamReader objReader = new InputStreamReader(objStream);  
+			        	            BufferedReader objBuf = new BufferedReader(objReader);  
+			        	            StringBuilder objJson = new StringBuilder();  
+			        	            String sLine;  
+			        	            while((sLine = objBuf.readLine()) != null){  
+			        	                objJson.append(sLine);  
+			        	            }  
+			        	            sReturn = objJson.toString();  
+			        	            objStream.close();  
+			        	        }  
+			        	    } catch (IOException e) {  
+			        	    }     
+			        //sleep			
+			        	    Log.d("test", sReturn.toString());
+			        	    
+			        	    stopFlg = true;
 				}
 				Intent logListIntent = new Intent(MainActivity.this, LogListActivity.class);
                 startActivity(logListIntent);
@@ -129,5 +134,4 @@ public class MainActivity extends Activity {
         });
         	
     }
-    
 }
