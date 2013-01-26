@@ -5,5 +5,10 @@
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="lib" path="/Users/ruibando/Developer/android-sdk-macosx/extras/android/support/v4/android-support-v4.jar"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry kind="lib" path="/Users/ruibando/Developer/evernote-sdk-android-master/library/libs/evernote-api-1.23.jar"/>
+	<classpathentry kind="lib" path="/Users/ruibando/Developer/evernote-sdk-android-master/library/libs/scribe-1.3.1.jar"/>
+	<classpathentry kind="lib" path="/Users/ruibando/Developer/libthrift.jar"/>
+	<classpathentry kind="lib" path="/Users/ruibando/Developer/slf4j-android-1.5.8.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/library"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

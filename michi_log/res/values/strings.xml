@@ -6,5 +6,22 @@
     <string name="title_activity_main">MainActivity</string>
     
     <string name="test">test</string>
+    <string name="freeword">フリーワード</string>
+    <string name="category">カテゴリー</string>
+    
+	<string-array name="category">
+	    <item>カテゴリー（選択なし）</item>
+	    <item>和食</item>
+	    <item>洋食</item>
+	    <item>中華</item>
+	</string-array>
+	
+	<string-array name="range">
+	    <item>範囲（選択なし）</item>
+	    <item>300m</item>
+	    <item>500m</item>
+	    <item>1000m</item>
+	    <item>2000m</item>
+	</string-array>
     
 </resources>

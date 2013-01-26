@@ -1,6 +1,7 @@
 eclipse.preferences.version=1
 encoding//src/com/michi_log/Activity/LogDetailActivity.java=UTF-8
 encoding//src/com/michi_log/Activity/LogListActivity.java=UTF-8
+encoding//src/com/michi_log/Activity/MainLoadActivity.java=UTF-8
 encoding//src/com/michi_log/Adapter/LogListAdapter.java=UTF-8
 encoding//src/com/michi_log/Dto/LogListDto.java=UTF-8
 encoding//src/com/michi_log/MainActivity.java=UTF-8

@@ -2,7 +2,132 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="@drawable/bg_01" >
     
+     <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
 
+        <ImageView
+            android:id="@+id/michi_load"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:contentDescription="@string/test"
+            android:src="@drawable/bt_searching" />
+    </LinearLayout>
+    
+	<TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="90dp"
+        android:stretchColumns="1" >
+
+        <TableRow
+            android:id="@+id/tableRow5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/freeword"
+                android:src="@drawable/bt_freeword" />
+
+            <EditText
+                android:id="@+id/test1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:hint="@string/freeword" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/test"
+                android:src="@drawable/bt_category" />
+
+            <Spinner 
+                android:id="@+id/categoryr" 
+    			android:layout_width="wrap_content" 
+    			android:layout_height="wrap_content"
+    			android:layout_gravity="center_vertical"
+    			android:entries="@array/category"
+    			android:prompt="@string/category">
+            </Spinner>
+        </TableRow>
+    	<TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/test"
+                android:src="@drawable/bt_range" />
+
+            <Spinner 
+                android:id="@+id/range" 
+    			android:layout_width="wrap_content" 
+    			android:layout_height="wrap_content"
+    			android:layout_gravity="center_vertical"
+    			android:entries="@array/range">
+            </Spinner>
+        </TableRow>
+    </TableLayout>
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal"
+        android:gravity="bottom">
+        <ImageView
+            android:id="@+id/home"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/test"
+                android:src="@drawable/bt_home"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="10dp"/>
+        <ImageView
+            android:id="@+id/history"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/test"
+                android:src="@drawable/bt_log"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"/>
+        <ImageView
+            android:id="@+id/search"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/test"
+                android:src="@drawable/bt_search"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"/>
+
+        <ImageView
+            android:id="@+id/setting"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/test"
+                android:src="@drawable/bt_conf"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="30dp"/>
+    </LinearLayout>
 </LinearLayout>
