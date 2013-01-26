@@ -4,11 +4,13 @@
     android:layout_width="fill_parent" 
     android:layout_height="?android:attr/listPreferredItemHeight"  
     android:padding="6dip">  
-    <TextView 
-    	android:id="@+id/log_list_no" 
-    	android:layout_width="wrap_content"  
-        android:layout_height="fill_parent" 
-        android:layout_marginRight="6dip"/>  
+    <ImageView
+    	android:id="@+id/michi_load"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:contentDescription="@string/test"
+        android:src="@drawable/log" /> 
     <LinearLayout 
     	android:orientation="vertical"  
         android:layout_width="0dip" 
@@ -30,7 +32,6 @@
         	android:layout_height="wrap_content"
         	android:layout_weight="1" >
         	<TextView 
-        	    android:text="@string/test"
         		android:layout_width="fill_parent"  
             	android:layout_height="wrap_content" 
             	android:singleLine="true" />
@@ -46,7 +47,6 @@
         	android:layout_height="wrap_content"
         	android:layout_weight="1" >
         	<TextView 
-        	    android:text="@string/test"
         		android:layout_width="fill_parent"  
             	android:layout_height="wrap_content" 
             	android:singleLine="true"/>

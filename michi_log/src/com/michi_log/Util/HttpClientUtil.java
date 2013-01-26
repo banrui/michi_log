@@ -14,19 +14,21 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 public class HttpClientUtil {
-	//-----[クライアント設定]
+	// -----[クライアント設定]
 	HttpClient httpclient;
 	HttpPost httppost;
 	HttpResponse response;
-	
-	public HttpResponse httpPostExecute(String createCompanyUrl, List<NameValuePair> nameValuePair){
-		httpclient = new DefaultHttpClient();
-        httppost = new HttpPost(createCompanyUrl);
 
-        try {
-        	//-----[POST送信]
+	public HttpResponse httpPostExecute(String createCompanyUrl,
+			List<NameValuePair> nameValuePair) {
+		httpclient = new DefaultHttpClient();
+		httppost = new HttpPost(createCompanyUrl);
+
+		try {
+			// -----[POST送信]
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePair));
-			response = httpclient.execute(new HttpHost("recruit.bridgesnote.com", 443, "https"),httppost);
+			response = httpclient.execute(new HttpHost(
+					"recruit.bridgesnote.com", 443, "https"), httppost);
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		} catch (ClientProtocolException e) {

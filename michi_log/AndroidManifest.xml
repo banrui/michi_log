@@ -28,6 +28,8 @@
 		<activity android:name=".Activity.SettingActivity"/>
 		<activity android:name=".Activity.ActiveMapActivity"/>
 		<activity android:name=".Activity.MainLoadActivity"/>
+		<activity android:name=".Activity.LogListActivity"/>
+		<activity android:name=".Activity.LogDetailActivity"/>
         <activity android:name="com.evernote.client.oauth.android.EvernoteOAuthActivity" />
     </application>
 
