@@ -18,7 +18,7 @@ import org.json.JSONObject;
 import com.michi_log.Adapter.LogListAdapter;
 import com.michi_log.Dto.LogListDto;
 import com.michi_log.Util.HttpClientUtil;
-import com.michilog.R;
+import com.michi_log.R;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -39,7 +39,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 /*
- * ƒŠƒXƒg•\¦—pActivity
+ * ãƒªã‚¹ãƒˆè¡¨ç¤ºç”¨Activity
  * author by Rui Bando 
  */
 public class LogListActivity extends ListActivity{
@@ -55,13 +55,13 @@ public class LogListActivity extends ListActivity{
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.log_list);
     	
-      //-----[POST‘—M‚·‚éƒf[ƒ^‚ğŠi”[]
+      //-----[POSTé€ä¿¡ã™ã‚‹ãƒ‡ãƒ¼ã‚¿ã‚’æ ¼ç´]
         List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(1);
-//      --ƒpƒ‰ƒ[ƒ^--
+      //--ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿â†“då…¥ã‚Œã‚‹ï¼ï¼--
         //nameValuePair.add(new BasicNameValuePair("test", tes));
 
-        //-----[”ñ“¯Šú‚ÅAPI‚ğÀs‚µJSON‚ğæ“¾]
-        BackgroundTask task = new BackgroundTask(this,"ƒf[ƒ^ˆ—’†","‚µ‚Î‚ç‚­‚¨‘Ò‚¿‰º‚³‚¢ô");
+        //-----[éåŒæœŸã§APIã‚’å®Ÿè¡Œã—JSONã‚’å–å¾—]
+        BackgroundTask task = new BackgroundTask(this,"ãƒ‡ãƒ¼ã‚¿å‡¦ç†ä¸­","ã—ã°ã‚‰ããŠå¾…ã¡ä¸‹ã•ã„â™ª");
         task.execute(nameValuePair);
         
 		final ListView lv = getListView();
@@ -81,24 +81,24 @@ public class LogListActivity extends ListActivity{
     }
 	
 	/*
-	 * ”ñ“¯Šúˆ—
+	 * éåŒæœŸå‡¦ç†
 	 * */
 	public class BackgroundTask extends AsyncTask<List<NameValuePair>, Void, String>{
 		private Context context = null;
 		private ProgressDialog dialog = null;
 		private String title;
 		private String msg;
-		//ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		//ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		public BackgroundTask(Context context,String title,String msg)
 		{
 			this.context = context;
 			this.title = title;
 			this.msg = msg;
 		}
-		//ˆ—Às‘Oƒƒ\ƒbƒh
+		//å‡¦ç†å®Ÿè¡Œå‰ãƒ¡ã‚½ãƒƒãƒ‰
 		protected void onPreExecute()
 		{
-			//ƒvƒƒOƒŒƒXƒ_ƒCƒAƒƒOİ’è
+			//ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒ€ã‚¤ã‚¢ãƒ­ã‚°è¨­å®š
 			dialog = new ProgressDialog(context);
 			dialog.setIndeterminate(true);
 			dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -113,11 +113,11 @@ public class LogListActivity extends ListActivity{
     		try {
     		    byteArrayOutputStream = new ByteArrayOutputStream();
 
-    			//-----[POST‘—M]
+    			//-----[POSTé€ä¿¡]
     		    HttpClientUtil httpClientUtil = new HttpClientUtil();
     		    HttpResponse response = httpClientUtil.httpPostExecute("URLURLURL", nameValuePair);
     	                    
-    	        //-----[ƒT[ƒo[‚©‚ç‚Ì‰“š‚ğæ“¾]
+    	        //-----[ã‚µãƒ¼ãƒãƒ¼ã‹ã‚‰ã®å¿œç­”ã‚’å–å¾—]
     	        if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
     	        	response.getEntity().writeTo(byteArrayOutputStream);
     	        } else {
@@ -135,23 +135,23 @@ public class LogListActivity extends ListActivity{
     	protected void onPostExecute(String result) {
     		String jsonData = result;
     		logList = new ArrayList<LogListDto>();   	
-    		//JSON‚©‚çæ“¾‚µ‚½ƒf[ƒ^‚ğ‹l‚ß‚é & SQLite‚É‹l‚ß‚é
+    		//JSONã‹ã‚‰å–å¾—ã—ãŸãƒ‡ãƒ¼ã‚¿ã‚’è©°ã‚ã‚‹ & SQLiteã«è©°ã‚ã‚‹
     		setLogListData(jsonData, logList);
     		if (logList.isEmpty() == true || logList == null) {
             	LogListDto noLogListDto = new LogListDto();
-            	noLogListDto.setLogName("ƒf[ƒ^‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ");
+            	noLogListDto.setLogName("ãƒ‡ãƒ¼ã‚¿ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“");
             	logList.add(noLogListDto);
             }   		
             logListAdapter = new LogListAdapter(LogListActivity.this, R.layout.log_list_row, logList);
             setListAdapter(logListAdapter);
-          //ƒvƒƒOƒŒƒXƒ_ƒCƒAƒƒOÁ‹
+          //ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒ€ã‚¤ã‚¢ãƒ­ã‚°æ¶ˆå»
     		dialog.dismiss();
     	}
     
     }
 	
 	/*
-	 * company_listƒe[ƒuƒ‹‚ÉV‚µ‚¢ƒf[ƒ^‚ğ’Ç‰Á
+	 * company_listãƒ†ãƒ¼ãƒ–ãƒ«ã«æ–°ã—ã„ãƒ‡ãƒ¼ã‚¿ã‚’è¿½åŠ 
 	 * setCompanyListData
 	 * @param
 	 * String jsonData
@@ -169,11 +169,11 @@ public class LogListActivity extends ListActivity{
 
 					String testtest = jArray.getJSONObject(i).getString("id").toString();
 					
-					//ListDto‚É‹l‚ß‚é
+					//ListDtoã«è©°ã‚ã‚‹
 					LogListDto LogListDto = new LogListDto();
 					LogListDto.setLogName(testtest);
 
-					//ArrayList‚É‹l‚ß‚é
+					//ArrayListã«è©°ã‚ã‚‹
 					companyList.add(LogListDto);
 				}
 			}

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.michilog"
+    package="com.michi_log"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -21,7 +21,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-		<activity android:name=".Activity.MainActivity"/>
+		<activity android:name=".Activity.HomeActivity"/>
+		<activity android:name=".Activity.HistoryActivity"/>
+		<activity android:name=".Activity.SearchActivity"/>
+		<activity android:name=".Activity.SettingActivity"/>
         
     </application>
 

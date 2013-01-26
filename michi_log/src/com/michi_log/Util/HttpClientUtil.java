@@ -14,7 +14,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 public class HttpClientUtil {
-	//-----[クライアント設定]
+	//-----[繧ｯ繝ｩ繧､繧｢繝ｳ繝郁ｨｭ螳咯
 	HttpClient httpclient;
 	HttpPost httppost;
 	HttpResponse response;
@@ -24,7 +24,7 @@ public class HttpClientUtil {
         httppost = new HttpPost(createCompanyUrl);
 
         try {
-        	//-----[POST送信]
+        	//-----[POST騾∽ｿ｡]
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePair));
 			response = httpclient.execute(new HttpHost("recruit.bridgesnote.com", 443, "https"),httppost);
 		} catch (UnsupportedEncodingException e) {

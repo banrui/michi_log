@@ -3,7 +3,7 @@ package com.michi_log.Adapter;
 import java.util.List;
 
 import com.michi_log.Dto.LogListDto;
-import com.michilog.R;
+import com.michi_log.R;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -32,10 +32,10 @@ public class LogListAdapter extends ArrayAdapter<LogListDto> {
 			logListview = inflater.inflate(R.layout.log_list_row, null);
 		}
 		
-		//•\¦ƒf[ƒ^‚Ìæ“¾
+		//è¡¨ç¤ºãƒ‡ãƒ¼ã‚¿ã®å–å¾—
 		LogListDto companyListDto = (LogListDto) items.get(position);
 		if (companyListDto != null) {
-			//ƒf[ƒ^‚ÌƒZƒbƒg
+			//ãƒ‡ãƒ¼ã‚¿ã®ã‚»ãƒƒãƒˆ
 			TextView logName = (TextView) logListview.findViewById(R.id.log_name);
 			logName.setText(companyListDto.getLogName());
 		}
