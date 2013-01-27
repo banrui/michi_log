@@ -27,8 +27,7 @@ public class ActiveMapActivity extends Activity {
 		homeButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent homeIntent = new Intent(ActiveMapActivity.this,
-						HomeActivity.class);
+				Intent homeIntent = new Intent(ActiveMapActivity.this, HomeActivity.class);
 				startActivity(homeIntent);
 				finish();
 			}
@@ -38,8 +37,7 @@ public class ActiveMapActivity extends Activity {
 		histroyButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent historyIntent = new Intent(ActiveMapActivity.this,
-						LogListActivity.class);
+				Intent historyIntent = new Intent(ActiveMapActivity.this, LogListActivity.class);
 				startActivity(historyIntent);
 				finish();
 			}
@@ -49,8 +47,7 @@ public class ActiveMapActivity extends Activity {
 		searchButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent searchIntent = new Intent(ActiveMapActivity.this,
-						SearchActivity.class);
+				Intent searchIntent = new Intent(ActiveMapActivity.this, SearchActivity.class);
 				startActivity(searchIntent);
 				finish();
 			}

@@ -17,12 +17,10 @@ public class LogListAdapter extends ArrayAdapter<LogListDto> {
 	private List<LogListDto> items;
 	private LayoutInflater inflater;
 
-	public LogListAdapter(Context context, int textViewResourceId,
-			List<LogListDto> items) {
+	public LogListAdapter(Context context, int textViewResourceId, List<LogListDto> items) {
 		super(context, textViewResourceId, items);
 		this.items = items;
-		this.inflater = (LayoutInflater) context
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
 	@Override
@@ -37,8 +35,7 @@ public class LogListAdapter extends ArrayAdapter<LogListDto> {
 		LogListDto companyListDto = (LogListDto) items.get(position);
 		if (companyListDto != null) {
 			// データのセット
-			TextView logName = (TextView) logListview
-					.findViewById(R.id.log_name);
+			TextView logName = (TextView) logListview.findViewById(R.id.log_name);
 			logName.setText(companyListDto.getLogName());
 		}
 		return logListview;

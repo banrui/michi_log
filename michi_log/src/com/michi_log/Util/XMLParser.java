@@ -3,11 +3,13 @@ package com.michi_log.Util;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
+import android.R.xml;
 import android.util.Log;
 import android.util.Xml;
 
@@ -24,6 +26,9 @@ public class XMLParser {
 	final static String HOLIDAY = "holiday";
 	final static String ACCESS = "access";
 	final static String IMG = "shop_image1";
+	final static String URL = "url";
+	final static String PR_S = "pr_short";
+	final static String COU = "pc_coupon";
 
 	public List<HashMap<String, String>> xmlParserFromString(String str) {
 		XmlPullParser xmlPullParser = Xml.newPullParser();
@@ -40,6 +45,11 @@ public class XMLParser {
 		List<String> catList = new ArrayList<String>();
 		List<String> addrList = new ArrayList<String>();
 		List<String> imgList = new ArrayList<String>();
+		List<String> urlList = new ArrayList<String>();
+		List<String> prShort = new ArrayList<String>();
+		List<String> telList = new ArrayList<String>();
+		List<String> openList = new ArrayList<String>();
+		List<String> couList = new ArrayList<String>();
 		String title = null;
 		try {
 			int eventType;
@@ -62,16 +72,26 @@ public class XMLParser {
 						title = ADDR;
 					} else if (xmlPullParser.getName().equals(IMG)) {
 						title = IMG;
+					} else if (xmlPullParser.getName().equals(URL)) {
+						title = URL;
+					} else if (xmlPullParser.getName().equals(PR_S)) {
+						title = PR_S;
+					} else if (xmlPullParser.getName().equals(TEL)) {
+						title = TEL;
+					} else if (xmlPullParser.getName().equals(OPEN)) {
+						title = OPEN;
+					} else if (xmlPullParser.getName().equals(COU)) {
+						title = COU;
 					}
-					Log.d("XmlPullParserSample",
-							"Start tag " + xmlPullParser.getName());
+					Log.d("XmlPullParserSample", "Start tag "
+							+ xmlPullParser.getName());
 				} else if (eventType == XmlPullParser.END_TAG) {
 					title = null;
-					Log.d("XmlPullParserSample",
-							"End tag " + xmlPullParser.getName());
+					Log.d("XmlPullParserSample", "End tag "
+							+ xmlPullParser.getName());
 				} else if (eventType == XmlPullParser.TEXT) {
-					Log.d("XmlPullParserSample",
-							"Text " + xmlPullParser.getText());
+					Log.d("XmlPullParserSample", "Text "
+							+ xmlPullParser.getText());
 					if (title != null) {
 						if (title.equals(NAME)) {
 							restaurantList.add(xmlPullParser.getText());
@@ -85,6 +105,16 @@ public class XMLParser {
 							addrList.add(xmlPullParser.getText());
 						} else if (title.equals(IMG)) {
 							imgList.add(xmlPullParser.getText());
+						} else if (title.equals(URL)) {
+							urlList.add(xmlPullParser.getText());
+						} else if (title.equals(PR_S)) {
+							prShort.add(xmlPullParser.getText());
+						} else if (title.equals(TEL)) {
+							telList.add(xmlPullParser.getText());
+						} else if (title.equals(OPEN)) {
+							openList.add(xmlPullParser.getText());
+						} else if (title.equals(COU)) {
+							couList.add(xmlPullParser.getText());
 						}
 					}
 				}
@@ -103,6 +133,11 @@ public class XMLParser {
 			restaurantMap.put(CAT, catList.get(i));
 			restaurantMap.put(ADDR, addrList.get(i));
 			restaurantMap.put(IMG, imgList.get(i));
+			restaurantMap.put(URL, urlList.get(i));
+			restaurantMap.put(PR_S, prShort.get(i));
+			restaurantMap.put(TEL, telList.get(i));
+			restaurantMap.put(OPEN, openList.get(i));
+			restaurantMap.put(COU, couList.get(i));
 			res.add(restaurantMap);
 		}
 		return res;

@@ -20,8 +20,7 @@ public class SettingActivity extends Activity {
 		homeButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent homeIntent = new Intent(SettingActivity.this,
-						HomeActivity.class);
+				Intent homeIntent = new Intent(SettingActivity.this, HomeActivity.class);
 				startActivity(homeIntent);
 			}
 		});
@@ -30,8 +29,7 @@ public class SettingActivity extends Activity {
 		histroyButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent historyIntent = new Intent(SettingActivity.this,
-						HistoryActivity.class);
+				Intent historyIntent = new Intent(SettingActivity.this, HistoryActivity.class);
 				startActivity(historyIntent);
 			}
 		});
@@ -40,8 +38,7 @@ public class SettingActivity extends Activity {
 		searchButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent searchIntent = new Intent(SettingActivity.this,
-						SearchActivity.class);
+				Intent searchIntent = new Intent(SettingActivity.this, SearchActivity.class);
 				startActivity(searchIntent);
 			}
 		});

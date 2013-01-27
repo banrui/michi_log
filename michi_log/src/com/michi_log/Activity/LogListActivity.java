@@ -51,15 +51,12 @@ public class LogListActivity extends ListActivity {
 		lv.setTextFilterEnabled(true);
 		lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				ListView listView = (ListView) parent;
-				LogListDto logListDto = (LogListDto) listView
-						.getItemAtPosition(position);
+				LogListDto logListDto = (LogListDto) listView.getItemAtPosition(position);
 				String logName = logListDto.getLogName().toString();
 
-				Intent logDetailIntent = new Intent(LogListActivity.this,
-						ActiveMapActivity.class);
+				Intent logDetailIntent = new Intent(LogListActivity.this, ActiveMapActivity.class);
 				startActivity(logDetailIntent);
 			}
 		});
@@ -139,8 +136,7 @@ public class LogListActivity extends ListActivity {
 				noLogListDto.setLogName("データが見つかりません");
 				logList.add(noLogListDto);
 			}
-			logListAdapter = new LogListAdapter(LogListActivity.this,
-					R.layout.log_list_row, logList);
+			logListAdapter = new LogListAdapter(LogListActivity.this, R.layout.log_list_row, logList);
 			setListAdapter(logListAdapter);
 			// プログレスダイアログ消去
 			dialog.dismiss();
@@ -153,8 +149,7 @@ public class LogListActivity extends ListActivity {
 	 * 
 	 * @param String jsonData ArrayList<CompanyListDto> companyList
 	 */
-	public ArrayList<LogListDto> setLogListData(String jsonData,
-			ArrayList<LogListDto> companyList) {
+	public ArrayList<LogListDto> setLogListData(String jsonData, ArrayList<LogListDto> companyList) {
 		// try {
 		// JSONObject rootObject = new JSONObject(jsonData);
 		// int jsonResult =

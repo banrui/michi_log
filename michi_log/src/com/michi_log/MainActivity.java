@@ -34,16 +34,14 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.top);
 
-		mEvernoteSession = EvernoteSession.init(this, CONSUMER_KEY,
-				CONSUMER_SECRET, EVERNOTE_HOST, null);
+		mEvernoteSession = EvernoteSession.init(this, CONSUMER_KEY, CONSUMER_SECRET, EVERNOTE_HOST, null);
 
 		ImageView michiLoadButton = (ImageView) findViewById(R.id.michi_load);
 		michiLoadButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent mainLoadActivity = new Intent(MainActivity.this,
-						MainLoadActivity.class);
-				startActivity(mainLoadActivity);
+				Intent mainLoadIntent = new Intent(MainActivity.this, MainLoadActivity.class);
+				startActivity(mainLoadIntent);
 
 			}
 		});
@@ -53,8 +51,7 @@ public class MainActivity extends Activity {
 		homeButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent homeIntent = new Intent(MainActivity.this,
-						HomeActivity.class);
+				Intent homeIntent = new Intent(MainActivity.this, HomeActivity.class);
 				startActivity(homeIntent);
 				finish();
 			}
@@ -64,8 +61,7 @@ public class MainActivity extends Activity {
 		histroyButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent historyIntent = new Intent(MainActivity.this,
-						LogListActivity.class);
+				Intent historyIntent = new Intent(MainActivity.this, LogListActivity.class);
 				startActivity(historyIntent);
 				finish();
 			}
@@ -75,8 +71,7 @@ public class MainActivity extends Activity {
 		searchButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent searchIntent = new Intent(MainActivity.this,
-						SearchActivity.class);
+				Intent searchIntent = new Intent(MainActivity.this, SearchActivity.class);
 				startActivity(searchIntent);
 				finish();
 			}

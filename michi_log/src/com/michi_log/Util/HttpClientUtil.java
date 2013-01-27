@@ -19,16 +19,14 @@ public class HttpClientUtil {
 	HttpPost httppost;
 	HttpResponse response;
 
-	public HttpResponse httpPostExecute(String createCompanyUrl,
-			List<NameValuePair> nameValuePair) {
+	public HttpResponse httpPostExecute(String createCompanyUrl, List<NameValuePair> nameValuePair) {
 		httpclient = new DefaultHttpClient();
 		httppost = new HttpPost(createCompanyUrl);
 
 		try {
 			// -----[POST送信]
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePair));
-			response = httpclient.execute(new HttpHost(
-					"recruit.bridgesnote.com", 443, "https"), httppost);
+			response = httpclient.execute(new HttpHost("recruit.bridgesnote.com", 443, "https"), httppost);
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		} catch (ClientProtocolException e) {
